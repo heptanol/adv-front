@@ -5,11 +5,11 @@ import { AuthHttp } from 'angular2-jwt';
 @Injectable()
 export class UserRepositoryService {
 
-  constructor(private authHttp: AuthHttp) {}
+  constructor(private authHttp : AuthHttp) {}
 
   getList() {
-    let url = 'http://127.0.0.1:12200/user';
-
+    let url = 'http://127.0.0.1:12200/app_dev.php/api/user';
+    
     return this.authHttp
         .get(url)
         .map((data: Response) => data.json());

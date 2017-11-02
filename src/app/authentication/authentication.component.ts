@@ -33,8 +33,8 @@ export class AuthenticationComponent implements OnInit {
         .authenticate(this.loginForm.value)
         .subscribe(
             data => {
-              localStorage.setItem('id_token', data.token);
-              this.router.navigate(['post']);
+              localStorage.setItem('token', data.token);
+              this.router.navigate(['user']);
             },
             error => this.error = error.message
         );
