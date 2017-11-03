@@ -11,7 +11,7 @@ export class AuthenticationService {
   constructor(private http: Http) { }
 
   authenticate(user: any) {
-    let url     = 'http://127.0.0.1:12200/app_dev.php/api/login_check';
+    let url     = 'http://127.0.0.1:15001/app_dev.php/api/login_check';
     let body     = new URLSearchParams();
     body.append('username', user.username);
     body.append('password', user.password);

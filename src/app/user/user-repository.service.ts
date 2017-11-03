@@ -8,7 +8,7 @@ export class UserRepositoryService {
   constructor(private authHttp : AuthHttp) {}
 
   getList() {
-    let url = 'http://127.0.0.1:12200/app_dev.php/api/user';
+    let url = 'http://127.0.0.1:15001/app_dev.php/api/user';
     
     return this.authHttp
         .get(url)
