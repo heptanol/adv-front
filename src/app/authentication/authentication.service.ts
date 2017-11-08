@@ -19,7 +19,6 @@ export class AuthenticationService {
     body.append('password', user.password);
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
-    console.log(url);
     return this.http
         .post(url, body.toString(), options)
         .map((data: Response) => data.json());
