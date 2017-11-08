@@ -1,16 +1,12 @@
 <!-- user/user.component.html -->
-<h1>{{user.username}}</h1>
+<h1>Users</h1>
 <div [hidden]="!error" class="alert alert-danger" role="alert">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only">Error:</span>
+
 </div>
-<div>
-  <h3>Email</h3>
-  <p class="lead">
-    {{user.email}}
-  </p>
-  <h3>Dérniere connexion</h3>
-  <p class="lead">
-    {{user.lastLogin | date:'medium' }}
-  </p>
-</div>
+<ul>
+  <li *ngFor="let user of users">
+    <a href="#" [routerLink]="['/user', user.username]">{{user.username}}</a>
+  </li>
+</ul>

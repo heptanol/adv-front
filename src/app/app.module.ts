@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
+import { BrowserXhr } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { Routing } from './app.routing';
@@ -11,6 +13,7 @@ import { AuthGuard } from './_guard/index';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthenticationService } from './authentication/authentication.service';
 import { HomepageComponent } from './homepage/homepage.component';
+import { UserListComponent } from './user/user-list.component';
 import { UserComponent } from './user/user.component';
 import { UserRepositoryService } from './user/user-repository.service';
 
@@ -23,13 +26,15 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AppComponent,
     HomepageComponent,
     AuthenticationComponent,
-    UserComponent
+    UserListComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    Routing
+    Routing,
+    NgProgressModule,
   ],
   providers: [
     {
@@ -37,6 +42,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
     },
+    {provide: BrowserXhr, useClass: NgProgressBrowserXhr},
     AuthGuard,
     AuthenticationService,
     UserRepositoryService

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {UserRepositoryService} from './user-repository.service';
+import { DatePipe } from '@angular/common';
+
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-user',
@@ -8,18 +12,24 @@ import {UserRepositoryService} from './user-repository.service';
 })
 export class UserComponent implements OnInit {
 
-  users: any[] = [];
+  user: any = {};
   error: string = '';
 
-  constructor(private userRepository: UserRepositoryService) { }
+  constructor(
+      private userRepository: UserRepositoryService,
+      private route: ActivatedRoute,
+      private router: Router
+  ) { }
 
   ngOnInit() {
-    this.userRepository
-        .getList()
+    let id = this.route.snapshot.paramMap.get('id');
+    this.userRepository.get(id)
         .subscribe(
-            data => this.users = data,
-            error => this.error = error.message
+            data => this.user = data,
+            error => this.error = error.message,
         );
+
+    
   }
 
 }

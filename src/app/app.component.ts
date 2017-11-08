@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   hasAuthToken() {
-    return localStorage.getItem('id_token') !== null;
+    return localStorage.getItem('token') !== null;
   }
 
   logout() {

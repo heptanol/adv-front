@@ -15,4 +15,12 @@ export class UserRepositoryService {
         .map((data: Response) => data.json());
   }
 
+  get(username) {
+    let url = 'http://127.0.0.1:15001/app_dev.php/api/user/'+ username;
+
+    return this.authHttp
+        .get(url)
+        .map((data: Response) => data.json())
+  }
+
 }
