@@ -16,6 +16,7 @@
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li *ngIf="!hasAuthToken()"><a [routerLink]="['login']">Login</a></li>
+        <li *ngIf="!hasAuthToken()"><a [routerLink]="['registration']" href="#">Registration</a></li>
         <li *ngIf="hasAuthToken()"><a (click)="logout()" href="#">Logout</a></li>
       </ul>
     </div>

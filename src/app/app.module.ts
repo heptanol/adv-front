@@ -16,6 +16,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { UserListComponent } from './user/user-list.component';
 import { UserComponent } from './user/user.component';
 import { UserRepositoryService } from './user/user-repository.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationService } from './registration/registration.service'
+
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig({}), http, options);
@@ -28,6 +31,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AuthenticationComponent,
     UserListComponent,
     UserComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +49,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     {provide: BrowserXhr, useClass: NgProgressBrowserXhr},
     AuthGuard,
     AuthenticationService,
+    RegistrationService,
     UserRepositoryService
   ],
   bootstrap: [AppComponent]
