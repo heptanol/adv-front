@@ -7,7 +7,7 @@ export class RegistrationService {
   constructor(private http: Http) { }
   
   register(user: any) {
-    let url     = 'http://127.0.0.1:15001/app_dev.php/api/regitration';
+    let url     = 'http://127.0.0.1:15001/app_dev.php/api/register';
     let body     = new URLSearchParams();
     body.append('username', user.username);
     body.append('password', user.password);

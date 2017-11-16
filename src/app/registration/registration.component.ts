@@ -11,6 +11,7 @@ export class RegistrationComponent implements OnInit {
 
   registrationForm: FormGroup;
   error: string = '';
+  info: string = '';
 
   constructor(
       private formBuilder: FormBuilder,
@@ -32,9 +33,12 @@ export class RegistrationComponent implements OnInit {
   onSubmit() {
     this.registrationService
         .register(this.registrationForm.value)
-        .subscribe(data => {
-          console.log(data);
-        });
+        .subscribe(
+            data => {
+              console.log(data);
+              this.info = data;
+            }
+        );
 
 
     console.log(this.registrationForm);

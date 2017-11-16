@@ -1,10 +1,10 @@
 <h1>Registration</h1>
 <div>
-  <div [hidden]="!error" class="alert alert-danger" role="alert">
-    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-    <span>Error: {{error}}</span>
 
+  <div [hidden]="!info" class="alert" [ngClass]="{'alert-success' : info.code == 0, 'alert-danger': info.code == 1}" role="alert">
+    <span>{{info.text}}</span>
   </div>
+
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Username*" formControlName="username">
