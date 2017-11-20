@@ -23,4 +23,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
   }
 
+  tests() {
+    console.log('test');
+  }
 }
