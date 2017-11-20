@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {AuthenticationService} from '../authentication/authentication.service';
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  title: string = 'My first AGM project';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+  
+  authenticationService: AuthenticationService;
+
+
+  constructor(authenticationService: AuthenticationService) {
+    this.authenticationService = authenticationService;
+  }
 
   ngOnInit() {
   }

@@ -14,6 +14,8 @@ export class RegistrationService {
     body.append('email', user.email);
     body.append('lastName', user.lastName);
     body.append('firstName', user.firstName);
+    body.append('sex', user.sex);
+    body.append('birthdate', user.birthdate.toISOString());
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
     return this.http

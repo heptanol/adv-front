@@ -5,6 +5,9 @@ import { Http, HttpModule, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 import { BrowserXhr } from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 import { AppComponent } from './app.component';
 import { Routing } from './app.routing';
@@ -39,6 +42,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     Routing,
     NgProgressModule,
+    BsDatepickerModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA3TWIbC60GZFx0_E0m2Fb7x7SSLVQ-kuw'
+    })
   ],
   providers: [
     {
