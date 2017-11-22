@@ -1,0 +1,32 @@
+app-root, mat-sidenav-container, .my-content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+mat-sidenav {
+    width: 200px;
+}
+mat-sidenav nav{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+mat-sidenav ul,
+mat-sidenav li {
+    width: 100%;
+}
+#nav-top {
+    position: absolute;
+    top: 0;
+}
+#nav-bottom {
+    position: absolute;
+    bottom: 0;
+}
+#menu-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    z-index: 150;
+}

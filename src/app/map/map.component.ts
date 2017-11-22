@@ -23,10 +23,10 @@ export class MapComponent implements OnInit{
       private userRepositoryService: UserRepositoryService,
       private mapsAPILoader: MapsAPILoader
   ) {
-    this.height = window.innerHeight - 51;
+    this.height = window.innerHeight;
 
     window.onresize = () => {
-      this.height = (window.innerHeight - 51);
+      this.height = window.innerHeight;
     };
   }
 

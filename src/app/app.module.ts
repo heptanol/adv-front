@@ -7,6 +7,9 @@ import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 import { BrowserXhr } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 
 import { AppComponent } from './app.component';
@@ -44,6 +47,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     Routing,
     NgProgressModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
     BsDatepickerModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3TWIbC60GZFx0_E0m2Fb7x7SSLVQ-kuw'
