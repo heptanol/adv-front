@@ -7,6 +7,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user/user-list.component';
 import { AuthGuard } from './_guard/index';
+import {MapComponent} from "./map/map.component";
 
 const APP_ROUTES: Routes = [
     {
@@ -29,6 +30,11 @@ const APP_ROUTES: Routes = [
     {
         path: 'user/:id',
         component: UserComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'map',
+        component: MapComponent,
         canActivate: [AuthGuard]
     },
     { path: '**', redirectTo: '' }

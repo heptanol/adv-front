@@ -20,7 +20,8 @@ import { UserListComponent } from './user/user-list.component';
 import { UserComponent } from './user/user.component';
 import { UserRepositoryService } from './user/user-repository.service';
 import { RegistrationComponent } from './registration/registration.component';
-import { RegistrationService } from './registration/registration.service'
+import { RegistrationService } from './registration/registration.service';
+import { MapComponent } from './map/map.component'
 
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -35,6 +36,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     UserListComponent,
     UserComponent,
     RegistrationComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

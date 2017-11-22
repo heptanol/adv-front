@@ -22,5 +22,13 @@ export class UserRepositoryService {
         .get(url)
         .map((data: Response) => data.json())
   }
+  
+  getNodes(username) {
+    let url = 'http://127.0.0.1:15001/app_dev.php/api/nodes/'+ username;
+
+    return this.authHttp
+        .get(url)
+        .map((data: Response) => data.json())
+  }
 
 }

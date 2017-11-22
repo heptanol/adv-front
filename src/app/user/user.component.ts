@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {UserRepositoryService} from './user-repository.service';
-import { DatePipe } from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
 
