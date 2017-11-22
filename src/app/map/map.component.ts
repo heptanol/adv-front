@@ -2,6 +2,7 @@ import { Component,  OnInit } from '@angular/core';
 import { LatLngBounds, MapsAPILoader } from '@agm/core';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserRepositoryService} from '../user/user-repository.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,19 +11,20 @@ import {UserRepositoryService} from '../user/user-repository.service';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit{
-
-
-
+  
   nodes: any = [];
   error: string = '';
   height: number;
   latlngBounds : LatLngBounds;
+  username: string;
 
   constructor(
       private authenticationService: AuthenticationService,
       private userRepositoryService: UserRepositoryService,
-      private mapsAPILoader: MapsAPILoader
+      private mapsAPILoader: MapsAPILoader,
+      private route: ActivatedRoute
   ) {
+    this.username = this.route.snapshot.paramMap.get('id') || this.authenticationService.whoami();
     this.height = window.innerHeight;
 
     window.onresize = () => {
@@ -32,9 +34,7 @@ export class MapComponent implements OnInit{
 
 
   ngOnInit() {
-    console.log(window);
-    let userName = this.authenticationService.whoami();
-    this.userRepositoryService.getNodes(userName)
+    this.userRepositoryService.getNodes(this.username)
         .subscribe(
             data => {
               this.nodes = data;

@@ -1,4 +1,5 @@
 <div class="container">
     <app-registration class="col-md-6" *ngIf="!authenticationService.loggedIn()"></app-registration>
     <app-authentication class="col-md-6" *ngIf="!authenticationService.loggedIn()"></app-authentication>
+    <app-user *ngIf="authenticationService.loggedIn()"></app-user>
 </div>

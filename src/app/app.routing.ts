@@ -37,6 +37,11 @@ const APP_ROUTES: Routes = [
         component: MapComponent,
         canActivate: [AuthGuard]
     },
+    {
+        path: 'map/:id',
+        component: MapComponent,
+        canActivate: [AuthGuard]
+    },
     { path: '**', redirectTo: '' }
 ];
 
