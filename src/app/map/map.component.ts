@@ -1,4 +1,4 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component,  OnInit, Input } from '@angular/core';
 import { LatLngBounds, MapsAPILoader } from '@agm/core';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserRepositoryService} from '../user/user-repository.service';
