@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef,  OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { LatLngBounds, MapsAPILoader } from '@agm/core';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserRepositoryService} from '../user/user-repository.service';
@@ -15,8 +15,7 @@ export class MapComponent implements OnInit{
 
   nodes: any = [];
   error: string = '';
-  lat: number;
-  lgt: number;
+  height: number;
   latlngBounds : LatLngBounds;
 
   constructor(
@@ -24,11 +23,16 @@ export class MapComponent implements OnInit{
       private userRepositoryService: UserRepositoryService,
       private mapsAPILoader: MapsAPILoader
   ) {
-    this.authenticationService = authenticationService;
+    this.height = window.innerHeight - 51;
+
+    window.onresize = () => {
+      this.height = (window.innerHeight - 51);
+    };
   }
 
 
   ngOnInit() {
+    console.log(window);
     let userName = this.authenticationService.whoami();
     this.userRepositoryService.getNodes(userName)
         .subscribe(
@@ -47,6 +51,10 @@ export class MapComponent implements OnInit{
         this.latlngBounds.extend(new window['google'].maps.LatLng(node.latitude, node.longitude))
       });
     });
+  }
+
+  open (image) {
+    console.log(image);
   }
 
 

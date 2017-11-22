@@ -1,5 +1,5 @@
-<agm-map [latitude]="lat" [longitude]="lng" [fitBounds]="latlngBounds">
-        <agm-marker *ngFor="let m of nodes" [latitude]="m.latitude" [longitude]="m.longitude"> </agm-marker>
+<agm-map [latitude]="lat" [longitude]="lng" [fitBounds]="latlngBounds" [style.height.px]="height">
+        <agm-marker *ngFor="let m of nodes" [latitude]="m.latitude" [longitude]="m.longitude" (markerClick)="open(m)"> </agm-marker>
 </agm-map>
 
 

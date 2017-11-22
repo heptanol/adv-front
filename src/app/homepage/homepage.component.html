@@ -1,10 +1,5 @@
-<h1>Home</h1>
-<agm-map *ngIf="authenticationService.loggedIn()" [latitude]="lat" [longitude]="lng">
-    <agm-marker
-            [latitude]="lat"
-            [longitude]="lng"
-            (markerClick)="tests()">
-    </agm-marker>
-</agm-map>
-<app-registration class="col-md-6" *ngIf="!authenticationService.loggedIn()"></app-registration>
-<app-authentication class="col-md-6" *ngIf="!authenticationService.loggedIn()"></app-authentication>
+<div class="container">
+    <h1>Home</h1>
+    <app-registration class="col-md-6" *ngIf="!authenticationService.loggedIn()"></app-registration>
+    <app-authentication class="col-md-6" *ngIf="!authenticationService.loggedIn()"></app-authentication>
+</div>
