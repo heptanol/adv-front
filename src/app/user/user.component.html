@@ -1,23 +1,16 @@
 <!-- user/user.component.html -->
+<div id="user-info">
 <div class="container">
-  <div class="col-md-4">
-    <h1>{{user.username}}</h1>
+  <div class="text-center">
+    <h1>{{user.first_name}} {{user.last_name}}</h1>
     <div [hidden]="!error" class="alert alert-danger" role="alert">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       <span class="sr-only">Error:</span>
     </div>
-    <div *ngIf="user.email">
-      <h3>Email</h3>
       <p class="lead">
         {{user.email}}
       </p>
-    </div>
-    <div *ngIf="user.last_login">
-      <h3>Dérniere connexion</h3>
-      <p class="lead">
-        {{user.last_login | date:'medium' }}
-      </p>
-    </div>
   </div>
-  <app-map class="col-md-8"></app-map>
 </div>
+</div>
+<app-map></app-map>
