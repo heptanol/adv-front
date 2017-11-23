@@ -10,6 +10,7 @@
       <ul id="nav-bottom" class="nav flex-column nav-pills">
         <li class="nav-link" *ngIf="!hasAuthToken()"><a [routerLink]="['']">Login</a></li>
         <li class="nav-link" *ngIf="!hasAuthToken()"><a [routerLink]="['']" href="#">Registration</a></li>
+        <li class="nav-link" *ngIf="hasAuthToken()"><a [routerLink]="['user', connectedUsername]" href="#">{{connectedUsername}}</a></li>
         <li class="nav-link" *ngIf="hasAuthToken()"><a (click)="logout()" href="#">Logout</a></li>
       </ul>
     </nav>

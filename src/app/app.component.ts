@@ -11,7 +11,11 @@ import { AuthenticationService } from './authentication/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+  connectedUsername: any;
+  
+  constructor(private authenticationService: AuthenticationService, private router: Router) {
+    this.connectedUsername = this.authenticationService.whoami(); 
+  }
 
   hasAuthToken() {
     return localStorage.getItem('token') !== null;
