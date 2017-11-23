@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpClient} from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 
@@ -9,19 +9,16 @@ import 'rxjs/add/operator/map';
 export class AuthenticationService {
 
 
-  constructor(private http: Http) {
+  constructor(
+      private http: HttpClient,
+      private jwtHelperService: JwtHelperService
+  ) {
   }
 
   authenticate(user: any) {
     let url     = 'http://127.0.0.1:15001/app_dev.php/api/login_check';
-    let body     = new URLSearchParams();
-    body.append('username', user.username);
-    body.append('password', user.password);
-    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-    let options = new RequestOptions({headers: headers});
     return this.http
-        .post(url, body.toString(), options)
-        .map((data: Response) => data.json());
+        .post(url, {username:user.username, password: user.password});
   }
 
   logout() {
@@ -29,13 +26,13 @@ export class AuthenticationService {
   }
 
   loggedIn() {
-    return tokenNotExpired();
+    let token = localStorage.getItem('token');
+    return token ? !this.jwtHelperService.isTokenExpired(token) : false;
   }
 
   whoami() {
-    let jwtHelper = new JwtHelper();
     let token = localStorage.getItem('token');
-    return jwtHelper.decodeToken(token).username;
+    return token ? this.jwtHelperService.decodeToken(token).username : null;
   }
   
 

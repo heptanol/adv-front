@@ -1,14 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Http, HttpModule, RequestOptions } from '@angular/http';
-import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
-import { BrowserXhr } from '@angular/http';
 import { AgmCoreModule } from '@agm/core';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+
 
 
 
@@ -27,9 +28,6 @@ import { RegistrationService } from './registration/registration.service';
 import { MapComponent } from './map/map.component'
 
 
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp( new AuthConfig({}), http, options);
-}
 
 @NgModule({
   declarations: [
@@ -44,23 +42,26 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpModule,
     Routing,
     NgProgressModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+        whitelistedDomains: ['127.0.0.1:15001']
+      }
+    }),
     BsDatepickerModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyA3TWIbC60GZFx0_E0m2Fb7x7SSLVQ-kuw'
     })
   ],
   providers: [
-    {
-      provide: AuthHttp,
-      useFactory: authHttpServiceFactory,
-      deps: [ Http, RequestOptions ]
-    },
-    {provide: BrowserXhr, useClass: NgProgressBrowserXhr},
+    { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true },
     AuthGuard,
     AuthenticationService,
     RegistrationService,

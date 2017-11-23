@@ -1,34 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
-import { AuthHttp } from 'angular2-jwt';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class UserRepositoryService {
 
-  constructor(private authHttp : AuthHttp) {}
+  constructor(private http : HttpClient) {}
 
   getList() {
     let url = 'http://127.0.0.1:15001/app_dev.php/api/user';
-    
-    return this.authHttp
-        .get(url)
-        .map((data: Response) => data.json());
+    return this.http.get<any>(url);
   }
+  
 
   get(username) {
     let url = 'http://127.0.0.1:15001/app_dev.php/api/user/'+ username;
-
-    return this.authHttp
-        .get(url)
-        .map((data: Response) => data.json())
+    return this.http.get<any>(url);
   }
   
   getNodes(username) {
     let url = 'http://127.0.0.1:15001/app_dev.php/api/nodes/'+ username;
-
-    return this.authHttp
-        .get(url)
-        .map((data: Response) => data.json())
+    return this.http.get<any>(url);
   }
 
 }

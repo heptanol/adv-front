@@ -33,12 +33,10 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registrationForm.value);
     this.registrationService
         .register(this.registrationForm.value)
         .subscribe(
             data => {
-              console.log(data);
               this.info = data;
             }
         );

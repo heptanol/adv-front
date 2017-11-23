@@ -33,9 +33,7 @@ export class AuthenticationComponent implements OnInit {
         .authenticate(this.loginForm.value)
         .subscribe(
             data => {
-              localStorage.setItem('token', data.token);
-              let username = this.authenticationService.whoami();
-              this.router.navigate(['user', username]);
+              localStorage.setItem('token', data['token']);
             },
             error => {
               console.log(error);
