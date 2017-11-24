@@ -14,8 +14,6 @@ export class NodeComponent implements OnInit {
     constructor(
         public dialogRef: MatDialogRef<NodeComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log(dialogRef);
-    console.log(data);
         this.imageUrl = data.image;
         this.title = data.title;
     }

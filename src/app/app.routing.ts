@@ -23,11 +23,6 @@ const APP_ROUTES: Routes = [
         component: RegistrationComponent
     },
     {
-        path: 'user',
-        component: UserListComponent,
-        canActivate: [AuthGuard]
-    },
-    {
         path: 'user/:id',
         component: UserComponent,
         canActivate: [AuthGuard]

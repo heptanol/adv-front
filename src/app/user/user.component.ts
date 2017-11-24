@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import {UserRepositoryService} from './user-repository.service';
-import {AuthenticationService} from '../authentication/authentication.service';
+import { ActivatedRoute } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -11,26 +10,26 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+    @Input()idUser: string;
+    user: any = {};
+    error = '';
 
-  user: any = {};
-  error: string = '';
 
+    constructor(
+        private route: ActivatedRoute,
+        private userRepository: UserRepositoryService,
+    ) {
+    }
 
-  constructor(
-      private userRepository: UserRepositoryService,
-      private route: ActivatedRoute,
-      private authenticationService: AuthenticationService
-  ) { }
-
-  ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id') || this.authenticationService.whoami();
-    this.userRepository.get(id)
-        .subscribe(
-            data => this.user = data,
-            error => this.error = error.message
-        );
-
-    
-  }
+    ngOnInit() {
+        this.route.params.subscribe(val => {
+            this.idUser = val.id;
+            this.userRepository.get(this.idUser)
+                .subscribe(
+                    data => this.user = data,
+                    error => this.error = error.message
+                );
+        });
+    }
 
 }

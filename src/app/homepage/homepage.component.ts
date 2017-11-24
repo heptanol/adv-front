@@ -9,21 +9,14 @@ import {AuthenticationService} from '../authentication/authentication.service';
 })
 export class HomepageComponent implements OnInit {
 
-  title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
-  
-  authenticationService: AuthenticationService;
+  username: string;
 
-
-  constructor(authenticationService: AuthenticationService) {
-    this.authenticationService = authenticationService;
+  constructor(private authenticationService: AuthenticationService) {
+    this.username = this.authenticationService.whoami();
   }
 
   ngOnInit() {
+
   }
 
-  tests() {
-    console.log('test');
-  }
 }
