@@ -6,15 +6,42 @@ app-root, mat-sidenav-container, .my-content {
 
 mat-sidenav {
     width: 200px;
+    background: #444e59;
 }
 mat-sidenav nav{
     height: 100%;
     width: 100%;
     position: relative;
+    padding: 10px 0 0;
 }
 mat-sidenav ul,
 mat-sidenav li {
     width: 100%;
+    padding: 0;
+    margin: 0;
+}
+mat-sidenav li a {
+    border-radius: 0;
+    outline: none;
+    font-size: 14px;
+    color: #acb5bf;
+    background: #444e59;
+    padding: 8px;
+}
+mat-sidenav li a i {
+    margin-right: 15px;
+}
+mat-sidenav li a:hover {
+    color: #f7f7f7;
+    background: #444e59;
+}
+mat-sidenav li a.is-active {
+    background: #fff;
+    color: #454e59;
+    border-right: 5px solid #91a351;
+}
+mat-sidenav-container{
+    background-color: #f7f7f7;
 }
 #nav-top {
     position: absolute;

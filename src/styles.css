@@ -15,4 +15,8 @@ html, body {
 .logo {
     margin: 5px;
 }
+.block {
+    border-top: solid #dadada;
+    padding: 5px;
+}
 

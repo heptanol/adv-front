@@ -1,10 +1,31 @@
-#user-info {
+.cover{
+    height: 400px;
+    overflow: hidden;
+    background: #777777;
+}
+.cover img {
+    margin-top: -250px;
+}
+.profile-pic{
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-    background: rgba(0,0,0,0.7);
-    color: #ffffff;
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    left: 50%;
+    top: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: #f7f7f7 solid 8px;
+    background-image: url("https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png");
+    background-size: 100%;
+}
+.profile-content {
+    margin-top: 130px;
+}
+.followers{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-image: url(https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png);
+    background-size: 100%;
 }

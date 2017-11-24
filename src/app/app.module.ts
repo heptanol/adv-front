@@ -6,7 +6,7 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import {JwtModule} from '@auth0/angular-jwt';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -50,6 +50,7 @@ import {MapComponent} from './map/map.component';
         MatSidenavModule,
         HttpClientModule,
         MatDialogModule,
+        MatTooltipModule,
         JwtModule.forRoot({
             config: {
                 tokenGetter: () => {

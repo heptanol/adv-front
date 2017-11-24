@@ -1,17 +1,31 @@
-<ng-progress></ng-progress>
+<ng-progress [showSpinner]="false" [thick]="true"></ng-progress>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <nav id="nav-top">
       <ul class="nav flex-column nav-pills">
-        <li class="nav-link"><a [routerLink]="['']">Home</a></li>
-        <li class="nav-link"><a [routerLink]="['map']">My map</a></li>
+        <li class="nav-link">
+            <a [routerLink]="['']"  [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+                <i class="glyphicon glyphicon-home"></i>Home
+            </a>
+        </li>
+        <li class="nav-link">
+            <a [routerLink]="['map']" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+                <i class="glyphicon glyphicon-globe"></i>My map
+            </a>
+        </li>
+        <li class="nav-link" *ngIf="hasAuthToken()">
+          <a [routerLink]="['/user', usernameConnected]" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+              <i class="glyphicon glyphicon-user"></i>{{usernameConnected}}
+          </a>
+        </li>
+        <li class="nav-link" *ngIf="hasAuthToken()">
+            <a (click)="logout()" [routerLinkActive]="'is-active'" href="#" [routerLinkActiveOptions]="{exact: true}">
+                <i class="glyphicon glyphicon-log-out"></i>Logout
+            </a>
+        </li>
       </ul>
       <ul id="nav-bottom" class="nav flex-column nav-pills">
-        <li class="nav-link" *ngIf="!hasAuthToken()"><a [routerLink]="['login']">Login</a></li>
-        <li class="nav-link" *ngIf="!hasAuthToken()"><a [routerLink]="['registration']" href="#">Registration</a></li>
-        <li class="nav-link" *ngIf="hasAuthToken()"><a [routerLink]="['/user', usernameConnected]" href="#">{{usernameConnected}}</a></li>
-        <li class="nav-link" *ngIf="hasAuthToken()"><a (click)="logout()" href="#">Logout</a></li>
       </ul>
     </nav>
   </mat-sidenav>
