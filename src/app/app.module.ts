@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
+import {AgmJsMarkerClustererModule} from '@agm/js-marker-clusterer';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -51,6 +52,7 @@ import {MapComponent} from './map/map.component';
         HttpClientModule,
         MatDialogModule,
         MatTooltipModule,
+        AgmJsMarkerClustererModule,
         JwtModule.forRoot({
             config: {
                 tokenGetter: () => {
