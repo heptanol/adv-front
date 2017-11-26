@@ -28,6 +28,7 @@ import {RegistrationComponent} from './registration/registration.component';
 import {RegistrationService} from './registration/registration.service';
 import {NodeComponent} from './node/node.component';
 import {MapComponent} from './map/map.component';
+import {NodeService} from './node/node.service';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import {MapComponent} from './map/map.component';
         AuthenticationService,
         RegistrationService,
         UserRepositoryService,
+        NodeService
     ],
     bootstrap: [AppComponent]
 })

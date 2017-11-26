@@ -5,6 +5,7 @@ import { UserRepositoryService } from '../user/user-repository.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NodeComponent } from '../node/node.component';
+import {NodeService} from '../node/node.service';
 
 
 
@@ -26,10 +27,12 @@ export class MapComponent implements OnInit {
       private userRepositoryService: UserRepositoryService,
       private mapsAPILoader: MapsAPILoader,
       private route: ActivatedRoute,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private nodeService: NodeService
   ) {
     this.username = this.route.snapshot.paramMap.get('id') || this.authenticationService.whoami();
     this.height = window.innerHeight;
+    console.log(this.nodeService)
 
     window.onresize = () => {
       this.height = window.innerHeight;
@@ -57,12 +60,18 @@ export class MapComponent implements OnInit {
     });
   }
 
-  open (image) {
-      this.dialog.open(NodeComponent, {
-          height: '95%',
-          data: image
-      }
-      );
+  open (node) {
+      this.nodeService.get(node.id)
+          .subscribe(
+              data => {
+                  this.dialog.open(NodeComponent, {
+                          height: '95%',
+                          data: data
+                      }
+                  );
+              },
+              error => this.error = error.message
+          );
   }
 }
 
