@@ -36,7 +36,6 @@ export class AuthenticationComponent implements OnInit {
               localStorage.setItem('token', data['token']);
             },
             error => {
-              console.log(error);
               this.error = error.statusText;
             }
         );

@@ -1,4 +1,17 @@
-<div class="text-center">
-  <h2>{{node.title}}</h2>
-  <img src="{{node.image}}" class="img-responsive" alt="Responsive image">
+<div class="node-wrap" *ngIf="!busy">
+    <div class="node-image">
+        <img src="{{node.image}}" class="node-image img-responsive" alt="Responsive image">
+    </div>
+    <div class="node-top text-white">
+        <div class="container">
+            <h3>{{node.title}}</h3>
+            <span><i class="glyphicon glyphicon-calendar"></i>Date</span>
+        </div>
+    </div>
+    <div class="node-content">
+        <div class="text-center">
+          <h2>{{node.title}}</h2>
+        </div>
+    </div>
 </div>
+<div class="loading" *ngIf="busy"></div>

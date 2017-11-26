@@ -4,7 +4,6 @@ import { AuthenticationService } from '../authentication/authentication.service'
 import { UserRepositoryService } from '../user/user-repository.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { NodeComponent } from '../node/node.component';
 import {NodeService} from '../node/node.service';
 
 
@@ -21,6 +20,8 @@ export class MapComponent implements OnInit {
   height: number;
   latlngBounds: LatLngBounds;
   username: string;
+  showNodeDetails = false;
+  nodeId: number;
 
   constructor(
       private authenticationService: AuthenticationService,
@@ -32,7 +33,6 @@ export class MapComponent implements OnInit {
   ) {
     this.username = this.route.snapshot.paramMap.get('id') || this.authenticationService.whoami();
     this.height = window.innerHeight;
-    console.log(this.nodeService)
 
     window.onresize = () => {
       this.height = window.innerHeight;
@@ -60,18 +60,12 @@ export class MapComponent implements OnInit {
     });
   }
 
-  open (node) {
-      this.nodeService.get(node.id)
-          .subscribe(
-              data => {
-                  this.dialog.open(NodeComponent, {
-                          height: '95%',
-                          data: data
-                      }
-                  );
-              },
-              error => this.error = error.message
-          );
-  }
+    open(id) {
+        this.nodeId = id;
+        this.showNodeDetails = true;
+    }
+    close() {
+        this.showNodeDetails = false;
+    }
 }
 
