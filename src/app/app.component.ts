@@ -19,6 +19,10 @@ export class AppComponent {
     hasAuthToken() {
       return localStorage.getItem('token') !== null;
     }
+    
+    getConnectedUsername() {
+        return this.authenticationService.whoami();
+    }
 
     logout() {
       this.authenticationService.logout();

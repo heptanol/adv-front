@@ -9,14 +9,14 @@
                 <i class="glyphicon glyphicon-home"></i>Home
             </a>
         </li>
-        <li class="nav-link">
+        <li class="nav-link" *ngIf="hasAuthToken()">
             <a [routerLink]="['map']" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
                 <i class="glyphicon glyphicon-globe"></i>My map
             </a>
         </li>
         <li class="nav-link" *ngIf="hasAuthToken()">
-          <a [routerLink]="['/user', usernameConnected]" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
-              <i class="glyphicon glyphicon-user"></i>{{usernameConnected}}
+          <a [routerLink]="['/user', getConnectedUsername()]" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+              <i class="glyphicon glyphicon-user"></i>{{getConnectedUsername()}}
           </a>
         </li>
         <li class="nav-link" *ngIf="hasAuthToken()">

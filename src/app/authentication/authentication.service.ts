@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient} from '@angular/common/http';
 import { AppConfig } from '../app.config';
+import { UserRepositoryService } from '../user/user-repository.service';
 
 
 @Injectable()
@@ -10,7 +11,8 @@ export class AuthenticationService {
 
     constructor(
         private http: HttpClient,
-        private jwtHelperService: JwtHelperService
+        private jwtHelperService: JwtHelperService,
+        private userRepositoryService: UserRepositoryService
     ) {
     }
 
@@ -30,7 +32,19 @@ export class AuthenticationService {
 
     whoami() {
         const token = localStorage.getItem('token');
+        console.log(this.jwtHelperService.decodeToken(token));
         return token ? this.jwtHelperService.decodeToken(token).username : null;
+    }
+
+    loadConnctedUser(token) {
+        const token = token || localStorage.getItem('token');
+        const username = this.whoami();
+        this.userRepositoryService.get(username)
+            .subscribe(
+                data => {
+                    localStorage.setItem('user', JSON.stringify(data));
+                });
+
     }
 
 

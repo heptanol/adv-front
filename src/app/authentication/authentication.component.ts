@@ -34,6 +34,8 @@ export class AuthenticationComponent implements OnInit {
         .subscribe(
             data => {
               localStorage.setItem('token', data['token']);
+              this.authenticationService.loadConnctedUser(data['token']);
+              this.router.navigate('');
             },
             error => {
               this.error = error.statusText;

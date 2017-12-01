@@ -1,22 +1,22 @@
 <!-- user/user.component.html -->
 <div class="cover">
-    <img class="img-responsive" src="{{user.cover_pic}}" align="middle" alt="">
+    <img class="img-responsive" src="{{user.coverPic}}" align="middle" alt="">
 </div>
 
 <div class="container profile-content">
     <div class="highlighted row">
         <div class="profile-pic col-md-3">
-            <img class="img-responsive" src="{{user.profile_pic}}" alt="">
+            <img class="img-responsive" src="{{user.profilePic}}" alt="">
         </div>
         <div class="left-highlighted col-md-9">
             <div class="about-me">
-                <h1 class="">{{user.first_name}} {{user.last_name}}</h1>
+                <h1 class="">{{user.firstName}} {{user.lastName}}</h1>
                 <p class="lead">
-                    {{user.about_me}}
+                    {{user.aboutMe}}
                 </p>
             </div>
             <div class="links">
-                <a href="#"><i class="glyphicon glyphicon-plus"></i> Follow</a>
+                <a href="#" *ngIf="usernameConnected != idUser"><i class="glyphicon glyphicon-plus"></i> Follow</a>
                 <a href="#" [routerLink]="['/map', user.username]"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
             </div>
         </div>
