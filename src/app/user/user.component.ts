@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(val => {
-            this.idUser = val.id;
+            this.idUser = val['id'];
             this.userRepository.get(this.idUser)
                 .subscribe(
                     data => this.user = data,

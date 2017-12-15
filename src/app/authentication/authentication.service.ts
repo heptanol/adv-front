@@ -32,12 +32,10 @@ export class AuthenticationService {
 
     whoami() {
         const token = localStorage.getItem('token');
-        console.log(this.jwtHelperService.decodeToken(token));
         return token ? this.jwtHelperService.decodeToken(token).username : null;
     }
 
     loadConnctedUser(token) {
-        const token = token || localStorage.getItem('token');
         const username = this.whoami();
         this.userRepositoryService.get(username)
             .subscribe(
