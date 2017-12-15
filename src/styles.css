@@ -18,5 +18,6 @@ html, body {
 .block {
     border-top: solid #dadada;
     padding: 5px;
+    background: #fff;
 }
 

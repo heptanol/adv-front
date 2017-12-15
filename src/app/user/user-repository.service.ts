@@ -30,7 +30,16 @@ export class UserRepositoryService {
 
     abortFollow(userId) {
         const url = AppConfig.URL.USER_ABORT_FOLLOW.replace('{id}', userId);
-        console.log(url);
+        return this.http.get<any>(url);
+    }
+    
+    getIFollow(userId) {
+        const url = AppConfig.URL.USER_GET_I_FOLLOW.replace('{id}', userId);
+        return this.http.get<any>(url);
+    }
+    
+    getFollowsMe(userId) {
+        const url = AppConfig.URL.USER_GET_FOLLOWS_ME.replace('{id}', userId);
         return this.http.get<any>(url);
     }
 }

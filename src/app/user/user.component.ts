@@ -16,6 +16,8 @@ export class UserComponent implements OnInit {
     error = '';
     usernameConnected: string;
     followStatus: boolean;
+    iFollow: any = [];
+    followsMe: any = [];
 
 
 
@@ -24,17 +26,22 @@ export class UserComponent implements OnInit {
         private userRepository: UserRepositoryService,
         private authenticationService: AuthenticationService
     ) {
+        console.log('constructor');
         this.usernameConnected = authenticationService.whoami();
     }
 
     ngOnInit() {
+        console.log('ngOnInit');
         this.route.params.subscribe(val => {
+        this.iFollow = [];
+        this.followsMe = [];
             this.idUser = val['id'];
             this.userRepository.get(this.idUser)
                 .subscribe(
                     data => {
                         this.user = data['user'];
                         this.followStatus = data['followStatus'];
+                        this.getFollowsList(this.user);
                     },
                     error => this.error = error.message
                 );
@@ -64,6 +71,17 @@ export class UserComponent implements OnInit {
         this.userRepository.abortFollow(this.user['id'])
             .subscribe(
                 data => this.followStatus = false
+            );
+    }
+
+    getFollowsList(user) {
+        this.userRepository.getIFollow(user['id'])
+            .subscribe(
+                data => this.iFollow = data
+            );
+        this.userRepository.getFollowsMe(user['id'])
+            .subscribe(
+                data => this.followsMe = data
             );
     }
 

@@ -24,19 +24,24 @@
     </div>
 
 
-    <div class="row mt-5 mb-5 block">
-
-        <div *ngIf="user.follows" class="col-md-6">
-            <h2>{{user.follows.length}} following</h2>
-            <a class="followers mr-3"  *ngFor="let follower of user.follows" [routerLink]="['/user', follower.username]" matTooltip="{{follower.username}}">
-                <img src="{{follower.profile_pic}}" alt="">
-            </a>
-        </div>
-        <div *ngIf="user.followed_by" class="col-md-6">
-            <h2>{{user.followed_by.length}} followers</h2>
-            <a class="followers mr-3" *ngFor="let follower of user.followed_by" [routerLink]="['/user', follower.username]" matTooltip="{{follower.username}}">
-                <img src="{{follower.profile_pic}}" alt="">
-            </a>
+    <div class="row mt-5 mb-5">
+        <div class="col-md-4">
+            <div *ngIf="iFollow.length != 0" class="mt-5 mb-5 block row">
+                <h2 class="col-md-12">{{iFollow.length}} following</h2>
+                <div class="col-md-3 mb-5" *ngFor="let follower of iFollow">
+                    <a class="followers" [routerLink]="['/user', follower.username]" matTooltip="{{follower.username}}">
+                        <img src="{{follower.profile_pic}}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="followsMe.length != 0" class="mt-5 mb-5 block row">
+                <h2 class="col-md-12">{{followsMe.length}} followers</h2>
+                <div class="col-md-3 mb-5" *ngFor="let follower of followsMe" >
+                    <a class="followers" [routerLink]="['/user', follower.username]" matTooltip="{{follower.username}}">
+                        <img src="{{follower.profile_pic}}" alt="">
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
