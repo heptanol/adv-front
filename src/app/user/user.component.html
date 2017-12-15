@@ -16,8 +16,9 @@
                 </p>
             </div>
             <div class="links">
-                <a href="#" *ngIf="usernameConnected != idUser"><i class="glyphicon glyphicon-plus"></i> Follow</a>
                 <a href="#" [routerLink]="['/map', user.username]"><i class="glyphicon glyphicon-map-marker"></i> Map</a>
+                <a (click)="abortFollow()" *ngIf="!isMe() && following()"><i class="glyphicon glyphicon-ok"></i> Following</a>
+                <a (click)="follow()" *ngIf="!isMe() && canFollow()"><i class="glyphicon glyphicon-plus"></i> Follow</a>
             </div>
         </div>
     </div>

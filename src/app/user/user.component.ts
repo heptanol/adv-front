@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
     user: any = {};
     error = '';
     usernameConnected: string;
+    followStatus: boolean;
 
 
 
@@ -31,10 +32,39 @@ export class UserComponent implements OnInit {
             this.idUser = val['id'];
             this.userRepository.get(this.idUser)
                 .subscribe(
-                    data => this.user = data,
+                    data => {
+                        this.user = data['user'];
+                        this.followStatus = data['followStatus'];
+                    },
                     error => this.error = error.message
                 );
         });
+    }
+    
+    isMe() {
+        return this.usernameConnected == this.idUser;
+    }
+
+    canFollow() {
+        return !this.followStatus;
+    }
+
+    following() {
+        return this.followStatus;
+    }
+
+    follow() {
+        this.userRepository.follow(this.user['id'])
+            .subscribe(
+                data => this.followStatus = true
+            );
+    }
+
+    abortFollow() {
+        this.userRepository.abortFollow(this.user['id'])
+            .subscribe(
+                data => this.followStatus = false
+            );
     }
 
 }

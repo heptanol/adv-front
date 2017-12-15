@@ -22,4 +22,15 @@ export class UserRepositoryService {
         return this.http.get<any>(url);
     }
 
+    follow(userId) {
+        const url = AppConfig.URL.USER_FOLLOW.replace('{id}', userId);
+        console.log(url);
+        return this.http.get<any>(url);
+    }
+
+    abortFollow(userId) {
+        const url = AppConfig.URL.USER_ABORT_FOLLOW.replace('{id}', userId);
+        console.log(url);
+        return this.http.get<any>(url);
+    }
 }
