@@ -5,22 +5,22 @@
     <nav id="nav-top">
       <ul class="nav flex-column nav-pills">
         <li class="nav-link">
-            <a [routerLink]="['']"  [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['']" (click)="sidenav.close()" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
                 <i class="glyphicon glyphicon-home"></i>Home
             </a>
         </li>
         <li class="nav-link" *ngIf="hasAuthToken()">
-            <a [routerLink]="['map']" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+            <a [routerLink]="['map']" (click)="sidenav.close()" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
                 <i class="glyphicon glyphicon-globe"></i>My map
             </a>
         </li>
         <li class="nav-link" *ngIf="hasAuthToken()">
-          <a [routerLink]="['/user', getConnectedUsername()]" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['/user', getConnectedUsername()]" (click)="sidenav.close()" [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact: true}">
               <i class="glyphicon glyphicon-user"></i>{{getConnectedUsername()}}
           </a>
         </li>
         <li class="nav-link" *ngIf="hasAuthToken()">
-            <a (click)="logout()" [routerLinkActive]="'is-active'" href="#" [routerLinkActiveOptions]="{exact: true}">
+            <a (click)="logout();sidenav.close()" [routerLinkActive]="'is-active'" href="#" [routerLinkActiveOptions]="{exact: true}">
                 <i class="glyphicon glyphicon-log-out"></i>Logout
             </a>
         </li>
