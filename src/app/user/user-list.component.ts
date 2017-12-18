@@ -1,25 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {UserRepositoryService} from './user-repository.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
 
-  users: any[] = [];
-  error: string = '';
+  @Input()users: any[] = [];
+  @Input()title: string;
 
-  constructor(private userRepository: UserRepositoryService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.userRepository
-        .getList()
-        .subscribe(
-            data => this.users = data,
-            error => this.error = error.message
-        );
+    
   }
 
 }

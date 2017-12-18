@@ -26,12 +26,10 @@ export class UserComponent implements OnInit {
         private userRepository: UserRepositoryService,
         private authenticationService: AuthenticationService
     ) {
-        console.log('constructor');
         this.usernameConnected = authenticationService.whoami();
     }
 
     ngOnInit() {
-        console.log('ngOnInit');
         this.route.params.subscribe(val => {
         this.iFollow = [];
         this.followsMe = [];

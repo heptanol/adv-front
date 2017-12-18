@@ -1,12 +1,9 @@
 <!-- user/user.component.html -->
-<h1>Users</h1>
-<div [hidden]="!error" class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>
-
+<div class="mt-5 mb-5 block row">
+  <h2 class="col-md-12">{{title}}</h2>
+  <div class="col-md-3 mb-2 pl-2 pr-2" *ngFor="let user of users">
+    <a class="user-item" [routerLink]="['/user', user.username]" matTooltip="{{user.username}}">
+      <img src="{{user.profilePic}}" alt="">
+    </a>
+  </div>
 </div>
-<ul>
-  <li *ngFor="let user of users">
-    <a href="#" [routerLink]="['/user', user.username]">{{user.username}}</a>
-  </li>
-</ul>
