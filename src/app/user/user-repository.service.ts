@@ -17,8 +17,8 @@ export class UserRepositoryService {
         return this.http.get<any>(url);
     }
 
-    getNodes(username) {
-        const url = AppConfig.URL.GET_USER_NODES.replace('{username}', username);
+    getNodesPosition(username) {
+        const url = AppConfig.URL.GET_USER_NODES_POSITIONS.replace('{username}', username);
         return this.http.get<any>(url);
     }
 

@@ -29,6 +29,7 @@ import {RegistrationService} from './registration/registration.service';
 import {NodeComponent} from './node/node.component';
 import {MapComponent} from './map/map.component';
 import {NodeService} from './node/node.service';
+import {TimelineComponent} from './timeline/timeline.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {NodeService} from './node/node.service';
         UserComponent,
         RegistrationComponent,
         MapComponent,
-        NodeComponent
+        NodeComponent,
+        TimelineComponent
     ],
     entryComponents: [NodeComponent],
     imports: [

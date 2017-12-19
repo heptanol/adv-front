@@ -29,6 +29,9 @@
             <app-user-list *ngIf="iFollow.length != 0" [users]="iFollow" [title]="iFollow.length + ' following'"></app-user-list>
             <app-user-list *ngIf="followsMe.length != 0" [users]="followsMe" [title]="followsMe.length + ' followers'"></app-user-list>
         </div>
+        <div class="col-md-9">
+            <app-timeline *ngIf="user['id']" [userId]="user['id']"></app-timeline>
+        </div>
     </div>
 
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, URLSearchParams } from '@angular/common/http';
 import { AppConfig } from '../app.config';
 
 @Injectable()
@@ -10,6 +10,15 @@ export class NodeService {
     get(id) {
         const url = AppConfig.URL.GET_NODE.replace('{id}', id);
         return this.http.get<any>(url);
+    }
+
+    getNodes(userId, page) {
+        let params = new HttpParams()
+            .set('user', userId)
+            .set('limit', 20)
+            .set('page', page);
+        const url = AppConfig.URL.GET_NODES;
+        return this.http.get<any>(url, {params: params});
     }
 
 }

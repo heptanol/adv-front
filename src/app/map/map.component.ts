@@ -41,7 +41,7 @@ export class MapComponent implements OnInit {
 
 
   ngOnInit() {
-    this.userRepositoryService.getNodes(this.username)
+    this.userRepositoryService.getNodesPosition(this.username)
         .subscribe(
             data => {
               this.nodes = data;

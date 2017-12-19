@@ -8,7 +8,8 @@ export class AppConfig {
         USER_ABORT_FOLLOW : AppConfig.BACK_URL + '/user/{id}/abort-follows',
         USER_GET_I_FOLLOW : AppConfig.BACK_URL + '/user/{id}/i-follow',
         USER_GET_FOLLOWS_ME : AppConfig.BACK_URL + '/user/{id}/follows-me',
-        GET_USER_NODES : AppConfig.BACK_URL + '/user/{username}/nodes',
+        GET_USER_NODES_POSITIONS : AppConfig.BACK_URL + '/user/{username}/nodes-positions',
         GET_NODE : AppConfig.BACK_URL + '/node/{id}',
+        GET_NODES : AppConfig.BACK_URL + '/nodes',
     };
 }
